@@ -1,0 +1,39 @@
+* {
+  background-color: #e4e6eb;
+}
+
+.top {
+  text-align: center;
+}
+
+h1 {
+  color: black;
+}
+
+button {
+  display: flex;
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+article {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.generate {
+  display: flex;
+  margin-left: 20px;
+}
+
+.secure {
+  display: flex;
+  border: black 3px dashed;
+  color: grey;
+  border-color: grey;
+  height: 300px;
+  justify-content: center;
+}
