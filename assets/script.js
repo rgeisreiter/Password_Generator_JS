@@ -1,9 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var special = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "-", "=", "+"];
-var numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"];
-var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
+var special = "!@#$%^&*()";
+var numeric = "123456789";
+var lower = "abcdefghi";
+var upper = "ABCDEFGHIJK";
 
 // Write password to the #password input
 
@@ -16,10 +16,11 @@ function generateItems() {
   } else if (passwordLength > 128) {
     alert("Password length must be less than 128 characters");
   }
-  var specialChar = confirm("Click OK to confirm special characters"); //confrim = true -- cancel = false
+  var specialChar = confirm("Click OK to confirm special characters");
   var numericChar = confirm("Click OK to confirm numeric characters");
   var lowerChar = confirm("Click OK to confirm lowercase characters");
   var upperChar = confirm("Click OK to confirm uppercase characters");
+  console.log(specialChar, numericChar, upperChar, lowerChar);
 
   if (
     (specialChar = false) &&
@@ -30,12 +31,13 @@ function generateItems() {
     alert("Must select at least one character type");
   }
   var items = {
-    length: length,
-    special: special,
-    numeric: numeric,
-    lower: lower,
-    special: special,
+    length: passwordLength,
+    numeric: numericChar,
+    lower: lowerChar,
+    special: specialChar,
+    upper: upperChar,
   };
+  console.log(items);
 
   return items;
 }
@@ -48,14 +50,15 @@ function createPassword(pWord) {
 
 function generatePassword() {
   var userItems = generateItems();
+  console.log(userItems);
   var randomPassword = [];
   var items = [];
 
-  if (userItems.lower === true) {
+  if (userItems.special === true) {
     items = items + special;
     console.log(items);
   }
-  if (userItems.lower === true) {
+  if (userItems.numeric === true) {
     items = items + numeric;
     console.log(numeric);
   }
@@ -63,18 +66,20 @@ function generatePassword() {
     items = items + lower;
     console.log(lower);
   }
-  if (userItems.lower === true) {
+  if (userItems.upper === true) {
     items = items + upper;
     console.log(upper);
   }
+  var finalPassword = "";
 
   for (var i = 0; i < userItems.length; i++) {
     var selection = createPassword(items);
-    randomPassword = randomPassword + selection;
+    finalPassword = finalPassword + selection;
   }
 
-  var string = randomPassword.toString("");
-  return string;
+  // var string = randomPassword.toString("");
+  // return string;
+  return finalPassword;
 }
 
 function writePassword() {
