@@ -73,8 +73,12 @@ function generatePassword() {
     randomPassword = randomPassword + selection;
   }
 
-  console.log(randomPassword.toString(""));
+  var string = randomPassword.toString(");
+  return string;
+   
+  
 }
+
 
 function writePassword() {
   var password = generatePassword();
